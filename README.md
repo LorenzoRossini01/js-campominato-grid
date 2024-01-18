@@ -32,3 +32,22 @@ Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dat
 Le validazioni e i controlli possiamo farli anche in un secondo momento.
 
 ### Svolgimento
+
+1. creo una costante per il grid container
+2. creo un input type select per selezionare la difficoltà
+   - creo un array di stringhe ('easy', 'medium', 'hard') e un valueArray di valori numerici (100, 81, 49)
+   - creo un ciclo for che scorra le posizioni dell'array
+     - far stampare nel dom le options con il tamplate literal
+3. creo una costante collegata ad un bottone nel dom
+4. creo un evento al click del bottone
+
+   - **genero una griglia**
+
+     - per tot volte(valore ottenuto in input)
+       - aggiungo una cella nella griglia
+
+   - **genero una cella nella griglia**
+     - creo l'elemento cella
+     - aggiungo la classe 'cell'
+   - **gestisco il click di una cella**
+     - toggle delle classi clicked
