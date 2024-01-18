@@ -40,15 +40,39 @@ img {
   flex-wrap: wrap;
 }
 
-.cell {
-  width: calc(100% / 10);
-  height: calc(100% / 10);
+.cell-100,
+.cell-81,
+.cell-49 {
+  background-color: rgb(179, 224, 241);
+  font-size: 1.5rem;
+  font-weight: bolder;
+
+  line-height: 100%;
   border: 3px solid black;
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
+}
+
+.cell-100 {
+  width: calc(100% / 10);
+  height: calc(100% / 10);
+}
+.cell-81 {
+  width: calc(100% / 9);
+  height: calc(100% / 9);
+}
+.cell-49 {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
 }
 
 footer {
   height: var(--footer-height);
+}
+
+div[class*="cell"].clicked {
+  background-color: rgb(12, 51, 66);
+  color: white;
 }
