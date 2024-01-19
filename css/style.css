@@ -46,6 +46,7 @@ img {
   background-color: rgb(179, 224, 241);
   font-size: 1.5rem;
   font-weight: bolder;
+  cursor: pointer;
 
   line-height: 100%;
   border: 3px solid black;
@@ -74,5 +75,10 @@ footer {
 
 div[class*="cell"].clicked {
   background-color: rgb(12, 51, 66);
+  color: white;
+}
+
+div[class*="cell"].clicked.bomb {
+  background-color: rgb(189, 21, 21);
   color: white;
 }
