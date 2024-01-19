@@ -78,7 +78,7 @@ div[class*="cell"].clicked {
   color: white;
 }
 
-div[class*="cell"].clicked.bomb {
+div[class*="cell"].bomb {
   background-color: rgb(189, 21, 21);
   color: white;
 }

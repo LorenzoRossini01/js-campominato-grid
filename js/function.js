@@ -20,7 +20,7 @@ function addOptionToSelectInput(array, valueArray, input) {
 function generateGrid(container, cellNumber) {
   container.innerHTML = "";
 
-  for (let i = 0; i < cellNumber; i++) {
+  for (let i = 1; i <= cellNumber; i++) {
     const cellEl = generateCell(i);
     container.append(cellEl);
   }
@@ -32,13 +32,18 @@ function generateGrid(container, cellNumber) {
  * @returns cella
  */
 
-function generateCell(i) {
+function generateCell(index) {
   const cell = document.createElement("div");
   cell.classList.add("cell-" + difficultyInput.value);
-  cell.innerText = i + 1;
+  cell.setAttribute("data-index", index);
   cell.addEventListener("click", function () {
-    this.classList.toggle("clicked");
-    console.log(cell.innerText);
+    if (bomb.includes(index)) {
+      this.classList.toggle("bomb");
+      console.log("bomb " + cell.innerText);
+    } else {
+      this.classList.toggle("clicked");
+      console.log("cell" + cell.innerText);
+    }
   });
   return cell;
 }

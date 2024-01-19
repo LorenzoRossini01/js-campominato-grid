@@ -20,6 +20,15 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 
 - con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 
+### Giorno 2
+
+- Step 1) Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+
+Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
+
+- Step 2) In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati
+  - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
 #### Consigli del giorno
 
 Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.

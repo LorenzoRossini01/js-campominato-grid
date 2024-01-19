@@ -10,11 +10,12 @@ const difficultyBomb = [16, 24, 32];
 addOptionToSelectInput(difficultyLevel, difficultyValueArray, difficultyInput);
 addOptionToSelectInput(difficultyBomb, difficultyBomb, difficultyBombInput);
 
+let bomb = [];
+
 playButton.addEventListener("click", function () {
   const userDifficultyValue = difficultyInput.value;
   const difficultyBombValue = difficultyBombInput.value;
   generateGrid(gridContainerEl, userDifficultyValue);
-
-  const bomb = generateBombList(userDifficultyValue, difficultyBombValue);
+  bomb = generateBombList(userDifficultyValue, difficultyBombValue);
   console.table(bomb);
 });
