@@ -56,8 +56,18 @@
         <div class="btn btn-primary fs-4 mt-4" id="play-button">Play</div>
       </form>
     </header>
-    <main class="wrapper">
-      <div class="grid-container"></div>
+    <main class="wrapper bg-dark">
+      <div class="grid-container bg-dark"></div>
+      <div class="game-details-container w-50 d-flex justify-content-between">
+        <div class="score-container text-center text-white">
+          <h2 class="my-4 fs-1">Score</h2>
+          <code id="score-display" class="fs-1 text-white">...</code>
+        </div>
+        <div class="lifepoints-container text-center text-white">
+          <h2 class="my-4 fs-1">Lifes</h2>
+          <code id="lifepoints-display" class="fs-1"></code>
+        </div>
+      </div>
     </main>
 
     <footer class="d-flex align-items-center gap-2">

@@ -21,7 +21,7 @@ function generateGrid(container, cellNumber) {
   container.innerHTML = "";
 
   for (let i = 1; i <= cellNumber; i++) {
-    const cellEl = generateCell(i);
+    const cellEl = generateCell(i, cellNumber);
     container.append(cellEl);
   }
 }
@@ -32,17 +32,44 @@ function generateGrid(container, cellNumber) {
  * @returns cella
  */
 
-function generateCell(index) {
+function generateCell(index, cellNumber) {
   const cell = document.createElement("div");
   cell.classList.add("cell-" + difficultyInput.value);
   cell.setAttribute("data-index", index);
+
+  cell.innerText = index;
+
   cell.addEventListener("click", function () {
-    if (bomb.includes(index)) {
-      this.classList.toggle("bomb");
-      console.log("bomb " + cell.innerText);
-    } else {
-      this.classList.toggle("clicked");
-      console.log("cell" + cell.innerText);
+    if (!gameOver) {
+      if (!bomb.includes(index)) {
+        this.classList.add("clicked");
+        this.innerHTML = `<i class="fa-solid fa-check fa-xl"></i>`;
+        score++;
+        scoreDisplay.innerText = score * 100 + " pt";
+        if (score == cellNumber - bomb.length) {
+          alert("hai vinto");
+
+          gameOver = true;
+        }
+      } else {
+        this.classList.add("bomb");
+        this.innerHTML = `<i class="fa-solid fa-bomb fa-xl"></i>`;
+        console.log(lifepoints);
+
+        lifepoints--;
+        lifepointsDisplay.innerHTML = "";
+        for (let i = 0; i < lifepoints; i++) {
+          lifepointsDisplay.innerHTML += `<i class="fa-solid fa-heart fs-1 text-danger"></i>`;
+        }
+        score--;
+        scoreDisplay.innerText = score * 100 + " pt";
+
+        if (lifepoints == 0) {
+          gameOver = true;
+
+          alert("hai perso");
+        }
+      }
     }
   });
   return cell;
