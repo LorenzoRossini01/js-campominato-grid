@@ -1,71 +1,80 @@
 # Esercizio Griglia Campo Minato
+## Descrizione del Progetto
+L'obiettivo di questo esercizio è creare una griglia interattiva per un gioco simile al Campo Minato. L'utente può generare la griglia e interagire con le celle, che possono contenere bombe. Il progetto prevede tre livelli di difficoltà e funzionalità aggiuntive per migliorare l'esperienza di gioco.
 
-### Consegna
+## Consegna
+### Parte 1: Creazione della Griglia
+- Generazione della Griglia:
 
-L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
+    - Un bottone permette di generare una griglia di gioco quadrata.
+    - Ogni cella è numerata progressivamente da 1 a 100.
+    - La griglia è composta da 10 righe e 10 colonne (10x10).
+    - Quando l'utente clicca su una cella, questa si colora di azzurro e viene visualizzato in console il numero della cella.
+    - 
+#### Bonus:
 
-Ogni cella ha un numero progressivo, da 1 a 100.
+- Aggiungere una select accanto al bottone per selezionare il livello di difficoltà:
+  - Difficoltà 1: 100 caselle (10x10)
+  - Difficoltà 2: 81 caselle (9x9)
+  - Difficoltà 3: 49 caselle (7x7)
+    
+### Parte 2: Implementazione delle Bombe
+- Generazione delle Bombe:
 
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
+  - Il computer genera 16 numeri casuali nel range della difficoltà scelta. Questi numeri rappresentano le bombe.
+  - Ogni bomba è posizionata in una cella unica (nessun duplicato).
+    
+- Interazione con le Celle:
 
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
+  - Se l'utente clicca su una cella che contiene una bomba, la cella si colora di rosso e la partita termina.
+  - Se l'utente clicca su una cella che non contiene una bomba, la cella si colora di azzurro e il gioco continua.
+  - 
+- Termine della Partita:
 
-### Bonus
+- La partita termina quando l'utente clicca su una bomba o quando tutte le celle non contenenti bombe sono state cliccate.
+- Al termine, viene comunicato il punteggio basato sul numero di celle sicure cliccate.
 
-Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi livelli di difficoltà:
+  
+#### Bonus Avanzati
+- Blocco delle Celle:
+  - Quando la partita termina (clic su una bomba), le altre celle non sono più cliccabili.
+    
+- Rivelazione delle Bombe:
+  - Alla fine della partita, tutte le bombe nascoste vengono rivelate automaticamente.
+    
+### Implementazione
+#### Passi per lo Sviluppo
+- Setup Iniziale:
 
-- con difficoltà 1 => 100 caselle, con un numero compreso tra 1 e 100, divise in 10 caselle per 10 righe;
+  - Creare un container per la griglia nel DOM.
+  - Creare un input select per scegliere la difficoltà (easy, medium, hard).
+  - Creare un bottone per generare la griglia.
+    
+- Generazione della Griglia:
 
-- con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
+  - Al click del bottone, generare una griglia con il numero di celle corrispondente alla difficoltà scelta.
+  - Ogni cella è un elemento HTML con un numero progressivo.
+    
+- Gestione degli Eventi di Click:
 
-- con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
+  - Quando l'utente clicca su una cella, applicare la classe 'clicked' per cambiare il colore della cella.
+  - Stampare il numero della cella cliccata in console.
+ 
+- Generazione delle Bombe:
 
-### Giorno 2
+  - Generare 16 numeri casuali unici nel range della difficoltà scelta e memorizzarli in un array.
+    
+- Verifica delle Bombe:
 
-- Step 1 - Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+  - Quando l'utente clicca su una cella, verificare se il numero della cella è presente nell'array delle bombe.
+  - Se è una bomba, colorare la cella di rosso e terminare la partita.
+  - Se non è una bomba, colorare la cella di azzurro e continuare il gioco.
+    
+- Termine della Partita e Punteggio:
 
-Attenzione: nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle bombe non potranno esserci due numeri uguali.
+  - Al termine della partita, visualizzare il punteggio (numero di celle sicure cliccate).
+  - Impedire ulteriori clic sulle celle dopo la fine della partita.
+  - Rivelare tutte le bombe nascoste.
 
-- Step 2 - In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati
-
-  - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-
-- Step 3 - La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
-  Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
-
-- Bonus 1
-  Quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle.
-- Bonus 2
-  Quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste.
-
-#### Consigli del giorno
-
-Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.
-
-Ad esempio
-Di cosa ho bisogno per generare i numeri?
-
-Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
-
-Le validazioni e i controlli possiamo farli anche in un secondo momento.
-
-### Svolgimento
-
-1. creo una costante per il grid container
-2. creo un input type select per selezionare la difficoltà
-   - creo un array di stringhe ('easy', 'medium', 'hard') e un valueArray di valori numerici (100, 81, 49)
-   - creo un ciclo for che scorra le posizioni dell'array
-     - far stampare nel dom le options con il tamplate literal
-3. creo una costante collegata ad un bottone nel dom
-4. creo un evento al click del bottone
-
-   - **genero una griglia**
-
-     - per tot volte(valore ottenuto in input)
-       - aggiungo una cella nella griglia
-
-   - **genero una cella nella griglia**
-     - creo l'elemento cella
-     - aggiungo la classe 'cell'
-   - **gestisco il click di una cella**
-     - toggle delle classi clicked
+## Link Preview
+https://lorenzorossini01.github.io/js-campominato-grid/
